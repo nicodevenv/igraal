@@ -1,0 +1,23 @@
+version: "2"
+services:
+  mysql:
+    image: mysql:5.6
+    ports:
+      - "4306:3306"
+    environment:
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+          - ./mysql:/docker-entrypoint-initdb.d
+  api:
+    build: ./api
+    ports:
+      - "8000:80"
+    volumes:
+      - ./api:/var/www/html
+    environment:
+      WEB_DOCUMENT_ROOT: "/var/www/html/public"
+    links:
+      - mysql
