@@ -1,3 +1,8 @@
+merchant:
+    resource: "@MerchantBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 commission:
     resource: "@CommissionBundle/Controller/"
     type:     annotation
