@@ -1,0 +1,4 @@
+services:
+#    commission.example:
+#        class: CommissionBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
