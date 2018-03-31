@@ -1,6 +1,6 @@
 <?php
 
-namespace AuthenticatorBundle\Entity;
+namespace UserBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
