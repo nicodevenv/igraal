@@ -33,4 +33,20 @@ class DefaultController extends Controller
         $serializedData = $this->get('serializer')->serialize($user, 'json');
         return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
     }
+
+    /**
+     * @Route("/user/{userId}", methods="GET", requirements={"userId"="\d+"}))
+     *
+     * @param $userId
+     * @return JsonResponse
+     */
+    public function getAction($userId)
+    {
+        $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
+
+        $user = $userRepo->findOneBy(['id' => $userId]);
+
+        $serializedData = $this->get('serializer')->serialize($user, 'json');
+        return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
+    }
 }
