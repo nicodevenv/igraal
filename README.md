@@ -39,16 +39,25 @@ The api is now running in http://localhost:8000
 
 The front is now running in http://localhost:3000
 
+# Allowed routes
+
+| MTHD | Route                               | Json parameters                   | Description                         |
+|------|-------------------------------------|-----------------------------------|-------------------------------------|
+| POST | localhost:8000/user/register        | name, password, email, profileUrl | Register an user                    |
+| POST | localhost:8000/user/login           | password, email                   | Login with user authentication data |
+| GET  | localhost:8000/commissions/{idUser} |                                   | Get user commissions                |
+| GET  | localhost:8000/user/{idUser}        |                                   | Get user dara                       |
+
 # Possible improvements
 
-API
+*API*
 ---
 
 - Use of form validation constaints : https://symfony.com/doc/current/reference/constraints.html
 - User login data via token : https://symfony.com/doc/current/security/api_key_authentication.html
 - Catch status 404 / 500 and return json
 
-FRONT
+*FRONT*
 -----
 
 - Use of React Router to navigate using links: https://reacttraining.com/react-router/
