@@ -3,10 +3,6 @@ services:
 #        class: UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
-
-
-    # controllers are imported separately to make sure they're public
-    # and have a tag that allows actions to type-hint services
     service.user:
-        class: UserBundle\Service\UserService
+        class: UserBundle\Services\UserService
         arguments: ["@doctrine.orm.entity_manager", "@serializer"]

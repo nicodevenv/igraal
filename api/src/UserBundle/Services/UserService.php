@@ -1,8 +1,7 @@
 <?php
-namespace UserBundle\Service;
+namespace UserBundle\Services;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 use UserBundle\Entity\User;
 use UserBundle\Repository\UserRepository;
@@ -29,8 +28,8 @@ class UserService {
      */
     public function __construct(EntityManager $entityManager, SerializerInterface $serializer)
     {
-        $this->userRepo = $entityManager->getRepository(User::class);
         $this->entityManager = $entityManager;
+        $this->userRepo = $this->entityManager->getRepository(User::class);
         $this->serializer = $serializer;
     }
 
