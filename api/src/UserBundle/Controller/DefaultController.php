@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
 use UserBundle\Form\UserType;
+use UserBundle\Services\UserService;
 
 class DefaultController extends Controller
 {
@@ -20,18 +21,17 @@ class DefaultController extends Controller
      */
     public function registerAction(Request $request)
     {
+        /** @var UserService $userService */
+        $userService = $this->container->get('service.user');
+
         $postData = json_decode($request->getContent(), true);
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->submit($postData);
+        $userData = $userService->saveUser($user);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
-
-        $serializedData = $this->get('serializer')->serialize($user, 'json');
-        return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
+        return new JsonResponse($userData, Response::HTTP_OK);
     }
 
     /**
@@ -42,12 +42,11 @@ class DefaultController extends Controller
      */
     public function getAction($userId)
     {
-        $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
+        /** @var UserService $userService */
+        $userService = $this->container->get('service.user');
+        $userData = $userService->findUserById($userId);
 
-        $user = $userRepo->findOneBy(['id' => $userId]);
-
-        $serializedData = $this->get('serializer')->serialize($user, 'json');
-        return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
+        return new JsonResponse($userData, Response::HTTP_OK);
     }
 
     /**
@@ -58,13 +57,12 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $postData = json_decode($request->getContent(), true);
+        /** @var UserService $userService */
+        $userService = $this->container->get('service.user');
 
-        $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
+        $data = json_decode($request->getContent(), true);
+        $userData = $userService->findUserByEmailPassword($data['email'], $data['password']);
 
-        $user = $userRepo->findOneBy(['email' => $postData['email'], 'password' => $postData['password']]);
-
-        $serializedData = $this->get('serializer')->serialize($user, 'json');
-        return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
+        return new JsonResponse($userData, Response::HTTP_OK);
     }
 }

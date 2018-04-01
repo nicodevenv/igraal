@@ -2,7 +2,7 @@
 
 namespace CommissionBundle\Controller;
 
-use CommissionBundle\Entity\Commission;
+use CommissionBundle\Services\CommissionService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,11 +18,10 @@ class DefaultController extends Controller
      */
     public function getUserCommissionAction($idUser)
     {
-        $repo = $this->getDoctrine()->getManager()->getRepository(Commission::class);
+        /** @var CommissionService $commissionService */
+        $commissionService = $this->container->get('service.commission');
+        $commissions = $commissionService->findUserCommissions($idUser);
 
-        $user = $repo->findBy(['idUser' => $idUser]);
-
-        $serializedData = $this->get('serializer')->serialize($user, 'json');
-        return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
+        return new JsonResponse($commissions, Response::HTTP_OK);
     }
 }

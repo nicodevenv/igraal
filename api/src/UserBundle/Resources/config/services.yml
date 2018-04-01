@@ -2,3 +2,7 @@ services:
 #    user.example:
 #        class: UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    service.user:
+        class: UserBundle\Services\UserService
+        arguments: ["@doctrine.orm.entity_manager", "@serializer"]
