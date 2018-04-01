@@ -1,5 +1,6 @@
 # Test description
 
+This is a basic project using Symfony 3.4 and ReactJs.
 
 The current project API can be launched using docker and provides 2 services :
 
@@ -37,3 +38,19 @@ Go to "front" folder and run "yarn install" in order to install react app depend
 The api is now running in http://localhost:8000
 
 The front is now running in http://localhost:3000
+
+# Possible improvements
+
+API
+---
+
+- Use of form validation constaints : https://symfony.com/doc/current/reference/constraints.html
+- User login data via token : https://symfony.com/doc/current/security/api_key_authentication.html
+- Catch status 404 / 500 and return json
+
+FRONT
+-----
+
+- Use of React Router to navigate using links: https://reacttraining.com/react-router/
+- Make a better design
+(I'm actually novice on ReactJs, I don't have much more idea of what other libraries to use in order to improve / optimize react projects)
