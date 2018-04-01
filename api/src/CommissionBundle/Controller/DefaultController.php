@@ -2,7 +2,6 @@
 
 namespace CommissionBundle\Controller;
 
-use CommissionBundle\Entity\Commission;
 use CommissionBundle\Services\CommissionService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

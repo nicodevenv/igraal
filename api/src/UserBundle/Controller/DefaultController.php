@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
 use UserBundle\Form\UserType;
-use UserBundle\Service\UserService;
+use UserBundle\Services\UserService;
 
 class DefaultController extends Controller
 {
