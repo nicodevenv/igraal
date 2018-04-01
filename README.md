@@ -32,4 +32,8 @@ You will be able to connect from host machine into docker database using theses 
 - host : localhost
 - database name : igraal
 
-The api is running in http://localhost:8000
+Go to "front" folder and run "yarn install" in order to install react app dependencies and then run "yarn start" to run front project
+
+The api is now running in http://localhost:8000
+
+The front is now running in http://localhost:3000
