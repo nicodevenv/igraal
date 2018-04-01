@@ -35,14 +35,14 @@ class UserService {
     }
 
     /**
-     * @param Request $request
+     * @param string $email
+     * @param string $password
      *
      * @return array
      */
-    public function findUserByRequest(Request $request)
+    public function findUserByEmailPassword($email, $password)
     {
-        $data = json_decode($request->getContent(), true);
-        $user = $this->userRepo->findOneBy(['email' => $data['email'], 'password' => $data['password']]);
+        $user = $this->userRepo->findOneBy(['email' => $email, 'password' => $password]);
         $userJson = $this->serializer->serialize($user, 'json');
 
         return json_decode($userJson, true);

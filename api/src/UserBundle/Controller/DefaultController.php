@@ -59,7 +59,9 @@ class DefaultController extends Controller
     {
         /** @var UserService $userService */
         $userService = $this->container->get('service.user');
-        $userData = $userService->findUserByRequest($request);
+
+        $data = json_decode($request->getContent(), true);
+        $userData = $userService->findUserByEmailPassword($data['email'], $data['password']);
 
         return new JsonResponse($userData, Response::HTTP_OK);
     }
