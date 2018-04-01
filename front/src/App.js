@@ -12,27 +12,25 @@ class App extends Component {
         };
 
         this.handleChangeUser = this.handleChangeUser.bind(this);
-        this.handleLoggedInState = this.handleLoggedInState.bind(this);
     }
 
     handleChangeUser(idUser) {
         this.setState({loggedUser: idUser});
     }
 
-    handleLoggedInState(loginState) {
-        this.setState({loggedIn: loginState});
-    }
-
     render() {
         return (
             <div className="App">
-                <Register apiBaseUrl={this.state.apiBaseUrl}/>
-                {this.state.loggedUser > 0 ? <span>loggedIn</span> : null}
-                {this.state.loggedUser === 0 ? <span>Authentication data error</span> : null}
-                {this.state.loggedUser === null || this.state.loggedUser === 0 ?
-                    <Login apiBaseUrl={this.state.apiBaseUrl} handleChangeUser={this.handleChangeUser} handleLoggedInState={this.handleLoggedInState}/>
+                {
+                    this.state.loggedUser === null || this.state.loggedUser === 0 ?
+                        <div>
+                            <Register apiBaseUrl={this.state.apiBaseUrl}/>
+                            <Login apiBaseUrl={this.state.apiBaseUrl} handleChangeUser={this.handleChangeUser}/>
+                        </div>
                     : null
                 }
+                {this.state.loggedUser === 0 ? <span>Authentication data error</span> : null}
+                {this.state.loggedUser > 0 ? <span>loggedIn</span> : null}
             </div>
         );
     }
