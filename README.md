@@ -41,6 +41,7 @@ The front is now running in http://localhost:3000
 
 # Allowed routes
 
+| MTHD | Route                               | Json parameters                   | Description                         |
 |------|-------------------------------------|-----------------------------------|-------------------------------------|
 | POST | localhost:8000/user/register        | name, password, email, profileUrl | Register an user                    |
 | POST | localhost:8000/user/login           | password, email                   | Login with user authentication data |
