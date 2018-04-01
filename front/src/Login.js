@@ -44,7 +44,7 @@ export default class Login extends Component {
                     isLoggingIn:false,
                 });
 
-                if (JSON.stringify(currentModule.state.loginResponse) == '{}') {
+                if (JSON.stringify(currentModule.state.loginResponse) === '{}') {
                     currentModule.props.handleChangeUser(0);
                 } else {
                     currentModule.props.handleChangeUser(currentModule.state.loginResponse.id);
@@ -58,7 +58,7 @@ export default class Login extends Component {
                 <input type="text" placeholder="email" value={this.state.email} onChange={this.handleEmail}/>
                 <input type="password" placeholder="password" value={this.state.password} onChange={this.handlePassword}/>
                 <button onClick={() => this.login()}>Log in</button>
-                {this.state.isLoggingIn ? <span>Loading please wait...</span> : null}
+                {this.state.isLoggingIn ? <span>Logging in please wait...</span> : null}
             </div>
         )
     }
