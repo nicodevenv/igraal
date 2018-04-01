@@ -49,4 +49,22 @@ class DefaultController extends Controller
         $serializedData = $this->get('serializer')->serialize($user, 'json');
         return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
     }
+
+    /**
+     * @Route("/user/login", methods="POST"))
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function loginAction(Request $request)
+    {
+        $postData = json_decode($request->getContent(), true);
+
+        $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
+
+        $user = $userRepo->findOneBy(['email' => $postData['email'], 'password' => $postData['password']]);
+
+        $serializedData = $this->get('serializer')->serialize($user, 'json');
+        return new JsonResponse(json_decode($serializedData, true), Response::HTTP_OK);
+    }
 }
