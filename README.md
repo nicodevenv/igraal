@@ -56,6 +56,8 @@ The front is now running in http://localhost:3000
 - Use of form validation constaints : https://symfony.com/doc/current/reference/constraints.html
 - User login data via token : https://symfony.com/doc/current/security/api_key_authentication.html
 - Catch status 404 / 500 and return json
+- DataProvider for tests : https://phpunit.de/manual/current/en/appendixes.annotations.html#appendixes.annotations.dataProvider
+- DoctrineFixtures for tests to make auto creation of data set (just like factories): https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html
 
 *FRONT*
 -----

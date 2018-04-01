@@ -6,12 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testGetUserCommissions()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', '/commissions/1');
 
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+        $userCommissions = json_decode($client->getResponse()->getContent(), true);
+
+        $this->assertEquals(5, count($userCommissions));
     }
 }
