@@ -30,13 +30,12 @@ export default class Commission extends Component {
     render() {
         return(
             <div>
-                <div>Commissions</div>
-                {this.state.isLoading ? <span>Loading please wait...</span> : null}
+                {this.state.isLoading ? <span>Loading commissions please wait...</span> : null}
                 {this.state.isLoaded && this.state.commissions.length === 0 ? <span>no commission found</span> : null}
                 {
                     this.state.isLoaded && this.state.commissions.length > 0 ?
                     this.state.commissions.map(function(data, index){
-                            return <div>
+                            return <div key={index}>
                                 <div>Date: {data.date}</div>
                                 <div>Amount: {data.cashback}</div>
                                 <div>Merchant: {data.merchant}</div>

@@ -68,8 +68,8 @@ export default class Register extends Component {
                 <input type="text" placeholder="profileUrl" value={this.state.profileUrl} onChange={this.handleRegisterProfileUrl} />
                 <button onClick={() => this.register()}>Register</button>
 
-                {this.state.isRegistering ? <span>Loading please wait...</span> : null}
-                {this.state.registerComplete && !this.state.isRegistering ? <UserData data={this.state.registerResponse}/> : null}
+                {this.state.isRegistering ? <span>Registering please wait...</span> : null}
+                {this.state.registerComplete && !this.state.isRegistering ? <UserData apiBaseUrl={this.props.apiBaseUrl} idUser={this.state.registerResponse.id}/> : null}
             </div>
         )
     }
