@@ -5,16 +5,16 @@ This is a basic project using Symfony 3.4 and ReactJs.
 The current project API can be launched using docker and provides 2 services :
 
 - mysql : database will automatically be created using the mysql:5.6 image
-- api : uses php:7.1-apache image and allow the use of php 7.1 running on a apache server.
+- api : uses php:7.1-apache image and allow the use of php 7.1 running on an apache server.
 
 
 Database file could be found into mysql folder.
 
-A .env file could be found in the root of the current project and contains all environment variables that are used by api.
+A .env file could be found in the root of the current project and contains all environment variables that the mysql service needs.
 
 # Configuration
 
-First get into api folder and use "composer install" and "composer update" to install and update project symfony 3.4 dependencies.
+First get into api folder and use "composer install" and "composer update" to install and update project dependencies.
 
 Next, go to "api/app/config/parameters.yml" and replace default doctrine data with the following values:
 - database_host: mysql
@@ -64,4 +64,7 @@ The front is now running in http://localhost:3000
 
 - Use of React Router to navigate using links: https://reacttraining.com/react-router/
 - Make a better design
+
 (I'm actually novice on ReactJs, I don't have much more idea of what other libraries to use in order to improve / optimize react projects)
+
+Hope you enjoy my work.
