@@ -3,6 +3,7 @@ import './App.css';
 import Register from './Register';
 import Login from './Login';
 import Commission from './Commission';
+import UserData from './UserData';
 
 class App extends Component {
     constructor(props) {
@@ -31,7 +32,14 @@ class App extends Component {
                     : null
                 }
                 {this.state.loggedUser === 0 ? <span>Authentication data error</span> : null}
-                {this.state.loggedUser > 0 ? <Commission apiBaseUrl={this.state.apiBaseUrl} idUser={this.state.loggedUser}/> : null}
+                {this.state.loggedUser > 0 ?
+                    (<div>
+                        <UserData apiBaseUrl={this.state.apiBaseUrl} idUser={this.state.loggedUser}/>
+                        <hr/>
+                        <Commission apiBaseUrl={this.state.apiBaseUrl} idUser={this.state.loggedUser}/>
+                    </div>)
+                    : null
+                }
             </div>
         );
     }

@@ -30,7 +30,6 @@ export default class Commission extends Component {
     render() {
         return(
             <div>
-                <div>Commissions</div>
                 {this.state.isLoading ? <span>Loading commissions please wait...</span> : null}
                 {this.state.isLoaded && this.state.commissions.length === 0 ? <span>no commission found</span> : null}
                 {
