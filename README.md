@@ -9,11 +9,18 @@ The current project API can be launched using docker and provides 2 services :
 
 Database file could be found into mysql folder.
 
-A .env file could be found in the root of the current project and contains all environment variables that are used by api / front.
+A .env file could be found in the root of the current project and contains all environment variables that are used by api.
 
 # Configuration
 
 First get into api folder and use "composer install" and "composer update" to install and update project symfony 3.4 dependencies.
+
+Next, go to "api/app/config/parameters.yml" and replace default doctrine data with the following values:
+- database_host: mysql
+- database_port: 3306
+- database_name: igraal
+- database_user: igraal
+- database_password: igraal
 
 Go back to project root and use "docker-compose up". [It will install the environment and then initialize database content using mysql/igraal_evaluation.sql file]
 
@@ -25,4 +32,8 @@ You will be able to connect from host machine into docker database using theses 
 - host : localhost
 - database name : igraal
 
-The api is running in http://localhost:8000
+Go to "front" folder and run "yarn install" in order to install react app dependencies and then run "yarn start" to run front project
+
+The api is now running in http://localhost:8000
+
+The front is now running in http://localhost:3000
