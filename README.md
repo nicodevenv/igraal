@@ -46,7 +46,7 @@ The front is now running in http://localhost:3000
 | POST | localhost:8000/user/register        | name, password, email, profileUrl | Register an user                    |
 | POST | localhost:8000/user/login           | password, email                   | Login with user authentication data |
 | GET  | localhost:8000/commissions/{idUser} |                                   | Get user commissions                |
-| GET  | localhost:8000/user/{idUser}        |                                   | Get user dara                       |
+| GET  | localhost:8000/user/{idUser}        |                                   | Get user data                       |
 
 # Possible improvements
 
